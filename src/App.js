@@ -10,8 +10,18 @@ import Entry from "./Entry";
 class App extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    onLogIn: false
   };
+
+  loginHandler = (e) => {
+    this.setState({ [e.target.className]: e.target.value })
+  }
+
+  togglelogin = () => {
+    // this.setState({ onLogIn: !onLogIn })
+
+  }
 
   render() {
     return (
@@ -24,9 +34,9 @@ class App extends Component {
                 <h1>Vacation Planning</h1>
               </Link>
 
-              <Entry />
+              <Entry onLogIn={this.state.onLogIn} />
 
-              <Route exact path="/login" render={props => <Login {...props} />} />
+              <Route exact path="/login" render={props => <Login {...props} username={this.state.username} password={this.state.password} loginHandler={this.loginHandler} />} />
 
 
               <Route exact path="/signup" render={props => <SignUp {...props} />} />
