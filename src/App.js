@@ -3,14 +3,17 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom"
 
 import "./Css/App.css";
+import Entry from "./Entry";
+import Likes from './Likes'
 import Login from "./Login";
 import SignUp from "./SignUp";
-import Entry from "./Entry";
+
 
 class App extends Component {
   state = {
     username: "",
     password: "",
+    likesCount: 0,
     onLogIn: false
   };
 
@@ -23,16 +26,28 @@ class App extends Component {
 
   }
 
+  likesCounter = () => {
+    this.setState({
+      likesCount: this.state.likesCount += 1
+    })
+  }
+
   render() {
+    // console.log(likesCount)
     return (
       <div className="App">
         <div >
+
+
           <Router>
             <React.Fragment>
+
 
               <Link to="/" style={{ textDecoration: 'none', margin: 'auto' }}>
                 <h1>Vacation Planning</h1>
               </Link>
+
+              <Likes likes={this.state.likesCount} likesCounter={this.likesCounter} />
 
               <Entry onLogIn={this.state.onLogIn} />
 
