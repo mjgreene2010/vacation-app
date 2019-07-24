@@ -13,26 +13,35 @@ import Trip from './Trip';
 
 class App extends Component {
   state = {
+    tripName: [],
     username: "",
     password: "",
     likesCount: 0,
     onLogIn: false
   };
 
-  loginHandler = (e) => {
-    this.setState({ [e.target.className]: e.target.value })
-  }
-
-  togglelogin = () => {
-    // this.setState({ onLogIn: !onLogIn })
-
+  addName = e => {
+    this.setState({
+      [e.target.className]: e.target.value
+    })
   }
 
   likesCounter = () => {
     this.setState({
-      likesCount: this.state.likesCount += 1
+      likesCount: this.state.likesCount + 1
     })
   }
+
+  loginHandler = (e) => {
+    this.setState({
+      [e.target.className]: e.target.value
+    })
+  }
+
+  togglelogin = () => {
+    // this.setState({ onLogIn: !onLogIn })
+  }
+
 
   render() {
     // console.log(likesCount)
@@ -54,7 +63,7 @@ class App extends Component {
 
               <Likes likes={this.state.likesCount} likesCounter={this.likesCounter} />
 
-              <Trip />
+              <Trip addName={this.addName} tripName={this.state.tripName} />
 
               <Entry onLogIn={this.state.onLogIn} />
 
