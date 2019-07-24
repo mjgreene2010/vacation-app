@@ -4,13 +4,10 @@ const trip = props => {
 
     console.log(props.tripName)
 
-    return props.tripName.map(name => {
-        <div>
-
-            <input onChange={props.addName}> </input>
-        </div>
-
-    })
+    return <div>
+        Name: <input onChange={props.addName}></input>{' '}
+        <button> Enter </button>
+    </div>
 }
 
 export default trip
