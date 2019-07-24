@@ -6,7 +6,9 @@ import "./Css/App.css";
 import Entry from "./Entry";
 import Likes from './Likes'
 import Login from "./Login";
+import NavBar from "./NavBar";
 import SignUp from "./SignUp";
+import Trip from './Trip';
 
 
 class App extends Component {
@@ -47,7 +49,12 @@ class App extends Component {
                 <h1>Vacation Planning</h1>
               </Link>
 
+              <NavBar />
+
+
               <Likes likes={this.state.likesCount} likesCounter={this.likesCounter} />
+
+              <Trip />
 
               <Entry onLogIn={this.state.onLogIn} />
 
