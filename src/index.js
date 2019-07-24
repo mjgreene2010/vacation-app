@@ -8,14 +8,14 @@ import "./Css/index.css";
 const reducer = (currentState, action) => {
   switch (action.type) {
     case 'INCREASE_LIKES':
-      return {
+      return { [action.payload]: currentState[action.payload] }
 
-      }
-      break
-    default: return currentState
-      break
   }
+
+  return currentState
+
 }
+
 
 const initialState = {
   username: '', password: ''
