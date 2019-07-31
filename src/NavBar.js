@@ -18,13 +18,22 @@ const navbar = props => {
 
     return <div>
 
-        <NavLink style={link}> Home </NavLink>
+        <NavLink to="/" style={link} activeStyle={{
+            background: "black", color: "white"
+        }}> Home </NavLink>
         {' '}
-        <NavLink style={link}> Destinations </NavLink>
+        <NavLink to="/destinations" style={link} activeStyle={{
+            background: "black", color: "white"
+        }}> Destinations </NavLink>
         {' '}
-        <NavLink style={link}> Discussion Board </NavLink>
+        <NavLink to="/discussionboard" style={link} activeStyle={{
+            background: "black", color: "white"
+        }}> Discussion Board </NavLink>
         {' '}
-        <NavLink style={link}> Voting Polls </NavLink>
+        <NavLink to="/votingpolls" style={link} activeStyle={{
+            background: "black", color: "white"
+        }}> Voting Polls </NavLink>
+
     </div>
 
 }

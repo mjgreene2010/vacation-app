@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 const likes = (props) => {
-    return <button onClick={props.likesCounter}>Likes: {props.likes}</button>
+    console.log(props)
+    return <button onClick={props.likesCounter}>Likes: {props.likesCount}</button>
 }
 
 export default likes

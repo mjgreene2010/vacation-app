@@ -1,19 +1,26 @@
 import React from 'react';
+import Likes from './Likes';
+import { Link } from "react-router-dom"
+
+
 
 const trip = props => {
 
-    console.log(props.addName)
+    console.log(props)
 
     return <div>
-        Name: <input onChange={props.addName}></input>{' '}
+        Name: <input className={props.addName}></input>{' '}
         <button onClick={props.addName} > Enter </button>
 
         {props.tripName.map(name => {
-            return <div>
-                <ol>
-                    {name}
-                </ol>
-            </div>
+            console.log(name)
+            return <ol>
+                <Link to={name} >
+                    {name}{' '}
+                    <Likes />
+                </Link>
+            </ol>
+
         })}
 
     </div>

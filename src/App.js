@@ -13,14 +13,16 @@ import Trip from './Trip';
 
 class App extends Component {
   state = {
-    tripName: [],
+    tripName: ["Miami Resurgence", "Dropping the Ball in New York"],
     username: "",
     password: "",
     likesCount: 0,
     onLogIn: false
   };
 
-  addName = e => {
+  addName = () => { }
+
+  nameHandler = e => {
     this.setState({
       [e.target.className]: e.target.value
     })
@@ -61,9 +63,9 @@ class App extends Component {
               <NavBar />
 
 
-              <Likes likes={this.state.likesCount} likesCounter={this.likesCounter} />
+              {/* <Likes likesCount={this.state.likesCount} likesCounter={this.likesCounter} /> */}
 
-              <Trip addName={this.addName} tripName={this.state.tripName} />
+              <Trip addName={this.addName} tripName={this.state.tripName} likesCount={this.state.likesCount} />
 
               <Entry onLogIn={this.state.onLogIn} />
 
