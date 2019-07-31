@@ -60,6 +60,8 @@ class App extends Component {
                 <h1>Vacation Planning</h1>
               </Link>
 
+              <Entry onLogIn={this.state.onLogIn} />
+
               <NavBar />
 
 
@@ -67,7 +69,7 @@ class App extends Component {
 
               <Trip addName={this.addName} tripName={this.state.tripName} nameHandler={this.nameHandler} likesCount={this.state.likesCount} />
 
-              <Entry onLogIn={this.state.onLogIn} />
+
 
               <Route exact path="/login" render={props => <Login {...props} username={this.state.username} password={this.state.password} loginHandler={this.loginHandler} />} />
 
