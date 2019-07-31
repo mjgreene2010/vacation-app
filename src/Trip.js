@@ -9,20 +9,20 @@ const trip = props => {
     console.log(props)
 
     return <div>
-        Name: <input className={props.addName}></input>{' '}
+        Name: <input className="" onChange={props.handleChange}></input>{' '}
         <button onClick={props.addName} > Enter </button>
+        <ol>
+            {props.tripName.map(name => {
 
-        {props.tripName.map(name => {
-            console.log(name)
-            return <ol>
-                <Link to={name} >
-                    {name}{' '}
-                    <Likes />
+                return <Link to={name} style={{ textDecoration: "none" }} >
+                    <li>
+                        {name}{' '}
+                        <Likes />
+                    </li>
                 </Link>
-            </ol>
-
-        })}
-
+            })}
+            <br style={{ lineHeight: "2rem" }} />
+        </ol>
     </div>
 }
 

@@ -65,7 +65,7 @@ class App extends Component {
 
               {/* <Likes likesCount={this.state.likesCount} likesCounter={this.likesCounter} /> */}
 
-              <Trip addName={this.addName} tripName={this.state.tripName} likesCount={this.state.likesCount} />
+              <Trip addName={this.addName} tripName={this.state.tripName} nameHandler={this.nameHandler} likesCount={this.state.likesCount} />
 
               <Entry onLogIn={this.state.onLogIn} />
 
