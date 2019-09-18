@@ -1,8 +1,8 @@
 html {
-  background-image: url("vacation background.jpg");
+  /* background-image: url("vacation background.jpg"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: gray
+  background-color: gray;
 }
 
 body {
