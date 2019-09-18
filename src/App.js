@@ -13,7 +13,7 @@ import Trip from './Trip';
 
 class App extends Component {
   state = {
-    tripName: ["Miami Resurgence", "Dropping the Ball in New York"],
+    tripName: ["Miami Resurgence", "Dropping the Ball in New York", "Leaving the country Canada"],
     username: "",
     password: "",
     likesCount: 0,
