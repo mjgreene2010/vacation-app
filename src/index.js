@@ -1,31 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import App from "./App";
-import "./Css/index.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import App from './App';
+import './Css/index.css';
 
 const reducer = (currentState, action) => {
   switch (action.type) {
     case 'INCREASE_LIKES':
-      return { [action.payload]: currentState[action.payload] }
-
+      return { [action.payload]: currentState[action.payload] };
   }
-
-  return currentState
-
-}
-
+  return currentState;
+};
 
 const initialState = {
-  username: '', password: ''
-}
+  username: '',
+  password: ''
+};
 
-const store = createStore(reducer, initialState)
+const store = createStore(reducer, initialState);
 
 ReactDOM.render(
-  <div><Provider store={store}>
-    <App /></Provider>
+  <div>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </div>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

@@ -1,0 +1,19 @@
+{
+    "Trips": [
+        {
+            "id": 1,
+            "tripName": "Miami Resurgence",
+            "likesCount": 5
+        },
+        {
+            "id": 2,
+            "tripName": "Dropping the Ball in New York",
+            "likesCount": 7
+        },
+        {
+            "id": 3,
+            "tripName": "Leaving the country Canada",
+            "likesCount": 6
+        }
+    ]
+}

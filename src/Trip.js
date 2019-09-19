@@ -1,28 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Likes from './Likes';
 import { Link } from 'react-router-dom';
 
-const trip = props => {
-  console.log(props);
+export default class Trip extends Component {
+  state = {
+    isTripOpen: true
+  };
 
-  return (
-    <div>
-      Name: <input className="" onChange={props.handleChange}></input>{' '}
-      <button onClick={props.addName}> Enter </button>
-      <ol>
-        {props.tripName.map(name => {
-          return (
-            <Link to={name} style={{ textDecoration: 'none' }}>
-              <li>
-                {name} <Likes />
-                <br style={{ lineHeight: '2rem' }} />
-              </li>
-            </Link>
-          );
-        })}
-      </ol>
-    </div>
-  );
-};
+  // const trip = (props, { open, setOpen }) => {
 
-export default trip;
+  render() {
+    console.log(this.props.trips);
+    return this.state.isTripOpen ? (
+      <div>
+        <ol>
+          {this.props.trips.map(trip => {
+            return (
+              <Link
+                to={trip.tripName}
+                key={trip.id}
+                style={{ textDecoration: 'none' }}
+              >
+                <li>
+                  {trip.tripName}{' '}
+                  <Likes
+                    likes={trip.likesCount}
+                    likesCounter={this.likesCounter}
+                  >
+                    {' '}
+                  </Likes>
+                  <br style={{ lineHeight: '2rem' }} />
+                </li>
+                <br />
+              </Link>
+            );
+          })}
+        </ol>
+
+        <button onClick={() => this.setState({ isTripOpen: false })}>
+          {' '}
+          Add Trip{' '}
+        </button>
+      </div>
+    ) : (
+      <div className="addName">
+        Name:{' '}
+        <input
+          type="string"
+          className="tripName"
+          onChange={this.props.nameHandler}
+          value={this.props.tripName}
+        ></input>{' '}
+        <button> Enter </button>
+        <br style={{ lineHeight: '2rem' }} />
+        <button onClick={() => this.setState({ isTripOpen: true })}>
+          {' '}
+          Close{' '}
+        </button>
+      </div>
+    );
+  }
+}
