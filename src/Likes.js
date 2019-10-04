@@ -4,7 +4,9 @@ import React from 'react';
 const likes = props => {
   console.log(props);
   return (
-    <button onClick={e => props.likesCounter(0)}>Likes: {props.likes}</button>
+    <button onClick={e => props.likesCounter(props.likes)}>
+      Likes: {props.likes}
+    </button>
   );
 };
 

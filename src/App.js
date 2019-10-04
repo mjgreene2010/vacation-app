@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import './Css/App.css';
 import Entry from './Entry';
-import Likes from './Likes';
+// import Likes from './Likes';
 import Login from './Login';
 import NavBar from './NavBar';
 import SignUp from './SignUp';
-import Trip from './Trip';
+import Trips from './Trips';
 
 class App extends Component {
   state = {
@@ -18,13 +18,17 @@ class App extends Component {
     onLogIn: false
   };
 
-  componentDidMount = () => {
+  getData = () => {
     fetch('http://localhost:4000/Trips')
       .then(res => res.json())
       .then(trips => {
         this.setState({ trips });
       });
     // .catch(console.log);
+  };
+
+  componentDidMount = () => {
+    this.getData();
   };
 
   // addName = name => {
@@ -37,10 +41,13 @@ class App extends Component {
     });
   };
 
-  likesCounter = e => {
-    e.preventDefault();
-    this.setState({
-      likesCount: this.state.likesCount + 1
+  likesCounter = id => {
+    this.state.trips.find(trip => {
+      if (id === trip.id) {
+        this.setState({
+          likesCount: (trip.likesCount += 1)
+        });
+      }
     });
   };
 
@@ -55,7 +62,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.trips);
     return (
       <div className="App">
         <div>
@@ -71,11 +77,11 @@ class App extends Component {
 
               {/* <Likes likesCount={this.state.likesCount} likesCounter={this.likesCounter} /> */}
 
-              <Trip
+              <Trips
                 addName={this.addName}
                 trips={this.state.trips}
                 nameHandler={this.nameHandler}
-                likesCount={this.state.likesCount}
+                likesCounter={this.likesCounter}
               />
 
               <Route
