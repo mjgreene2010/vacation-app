@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import './Css/App.css';
-import Entry from './Entry';
+import Entry from './Component/Entry';
 // import Likes from './Likes';
-import Login from './Login';
-import NavBar from './NavBar';
-import SignUp from './SignUp';
-import Trips from './Trips';
+import Login from './Component/Login';
+import NavBar from './Component/NavBar';
+import SignUp from './Component/SignUp';
+import Trips from './Component/Trips';
 
 class App extends Component {
   state = {

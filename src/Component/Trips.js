@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import Likes from './Likes';
+import Trip from './Trip';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export default class Trips extends Component {
@@ -8,26 +9,13 @@ export default class Trips extends Component {
   };
 
   render() {
-    // console.log(this.props);
     return this.state.isTripOpen ? (
       <div>
         <ol>
           {this.props.trips.map(trip => {
             return (
               <div>
-                <li key={trip.id}>
-                  <Link
-                    to={trip.tripName}
-                    key={trip.id}
-                    style={{ textDecoration: 'none' }}
-                  >
-                    {trip.tripName}
-                  </Link>{' '}
-                  <button onClick={() => this.props.likesCounter(trip.id)}>
-                    Likes: {trip.likesCount}
-                  </button>
-                </li>
-                <br />
+                <Trip trip={trip} likesCounter={this.props.likesCounter}></Trip>
               </div>
             );
           })}
@@ -57,3 +45,16 @@ export default class Trips extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    likes: state.likesCount
+  };
+};
+
+const mapDispatchToProps = dispatch => {};
+
+export const connectLikes = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Trips);

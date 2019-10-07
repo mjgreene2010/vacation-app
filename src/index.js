@@ -2,21 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+// import reducer from './store/reducer';
 import App from './App';
 import './Css/index.css';
 
 const reducer = (currentState, action) => {
   switch (action.type) {
     case 'INCREASE_LIKES':
-      return { [action.payload]: currentState[action.payload] };
+      // var newState = {};
+      return { ...currentState, likesCount: currentState.trips.likesCount + 1 };
+      // return newState;
+
+      break;
+    default:
+      return currentState;
   }
-  return currentState;
 };
 
 const initialState = {
-  username: '',
-  password: ''
+  trips: []
 };
+
+// getData = () => {
+//   fetch('http://localhost:4000/Trips')
+//     .then(res => res.json())
+//     .then(trips => {
+//       this.setState({ trips });
+//     });
+// };
+
+// componentDidMount = () => {
+//   this.getData();
+// };
 
 const store = createStore(reducer, initialState);
 
