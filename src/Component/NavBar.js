@@ -3,51 +3,51 @@ import { NavLink } from 'react-router-dom';
 
 const navbar = props => {
   const link = {
-    width: 'medium',
-    color: 'black',
-    display: 'inline-block',
-    textDecoration: 'none',
-    margin: '25px',
-    border: 'solid 3px',
-    marginTop: '1px',
-    borderRadius: '15px',
-    padding: '5px'
+    // width: 'medium'
+    // color: 'black'
+    // display: 'inline-block'
+    // textDecoration: 'none'
+    margin: '20px',
+    border: 'solid 3px'
+    // marginTop: '1px'
+    // borderRadius: '15px',
+    // padding: '5px'
   };
 
   return (
     <div>
       <NavLink
+        className="btn badge-pill"
         to="/"
         exact
         style={link}
         activeStyle={{ background: 'black', color: 'white' }}
       >
-        {' '}
-        Home{' '}
+        Home
       </NavLink>{' '}
       <NavLink
+        className="btn badge-pill"
         to="/destinations"
         style={link}
         activeStyle={{ background: 'black', color: 'white' }}
       >
-        {' '}
-        Destinations{' '}
+        Destinations
       </NavLink>{' '}
       <NavLink
+        className="btn badge-pill"
         to="/discussionboard"
         style={link}
         activeStyle={{ background: 'black', color: 'white' }}
       >
-        {' '}
-        Discussion Board{' '}
+        Discussion Board
       </NavLink>{' '}
       <NavLink
+        className="btn badge-pill"
         to="/votingpolls"
         style={link}
         activeStyle={{ background: 'black', color: 'white' }}
       >
-        {' '}
-        Voting Polls{' '}
+        Voting Polls
       </NavLink>
     </div>
   );

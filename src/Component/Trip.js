@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const trip = props => {
+const _Trip = props => {
   return (
     <div>
-      <li key={props.trip.key}>
+      <div key={props.trip.key}>
         <Link
           to={props.trip.tripName}
           key={props.trip.id}
@@ -15,10 +16,10 @@ const trip = props => {
         <button onClick={() => props.likesCounter(props.trip.id)}>
           Likes: {props.trip.likesCount}
         </button>
-      </li>
+      </div>
       <br />
     </div>
   );
 };
 
-export default trip;
+export const Trip = withRouter(_Trip);

@@ -1,12 +1,14 @@
-html {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
   background-image: url('../vacation_background.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: gray;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.jumbotron {
+  background: rgb(85, 174, 243, 0.2);
 }

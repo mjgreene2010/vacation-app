@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import Trip from './Trip';
+import { Trip } from './Trip';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
-export default class Trips extends Component {
+class _Trips extends Component {
   state = {
     isTripOpen: true
+  };
+
+  componentDidMount = () => {
+    this.props.fetchTrips();
   };
 
   render() {
     return this.state.isTripOpen ? (
       <div>
-        <ol>
+        <div style={{ textDecoration: 'none' }}>
           {this.props.trips.map(trip => {
             return (
               <div>
-                <Trip trip={trip} likesCounter={this.props.likesCounter}></Trip>
+                <Trip
+                  key={trip.id}
+                  trip={trip}
+                  // likesCounter={this.props.likesCounter}
+                ></Trip>
               </div>
             );
           })}
-        </ol>
+        </div>
 
         <button onClick={() => this.setState({ isTripOpen: false })}>
           {' '}
@@ -48,13 +55,15 @@ export default class Trips extends Component {
 
 const mapStateToProps = state => {
   return {
-    likes: state.likesCount
+    trips: state.trips
   };
 };
 
-const mapDispatchToProps = dispatch => {};
+const mapDispatchToProps = dispatch => ({
+  fetchTrips: () => dispatch({ type: 'FETCH_TRIPS' })
+});
 
-export const connectLikes = connect(
+export const Trips = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Trips);
+)(_Trips);

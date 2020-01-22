@@ -8,27 +8,12 @@ import Entry from './Component/Entry';
 import Login from './Component/Login';
 import NavBar from './Component/NavBar';
 import SignUp from './Component/SignUp';
-import Trips from './Component/Trips';
+import Home from './Component/Home';
+import Destinations from './Component/Destinations';
 
 class App extends Component {
   state = {
-    trips: [],
-    username: '',
-    password: '',
     onLogIn: false
-  };
-
-  getData = () => {
-    fetch('http://localhost:4000/Trips')
-      .then(res => res.json())
-      .then(trips => {
-        this.setState({ trips });
-      });
-    // .catch(console.log);
-  };
-
-  componentDidMount = () => {
-    this.getData();
   };
 
   // addName = name => {
@@ -41,49 +26,35 @@ class App extends Component {
     });
   };
 
-  likesCounter = id => {
-    this.state.trips.find(trip => {
-      if (id === trip.id) {
-        this.setState({
-          likesCount: (trip.likesCount += 1)
-        });
-      }
-    });
-  };
-
   loginHandler = e => {
     this.setState({
       [e.target.className]: e.target.value
     });
   };
 
-  togglelogin = () => {
-    // this.setState({ onLogIn: !onLogIn })
-  };
+  // togglelogin = () => {
+  //   this.setState({ onLogIn: !onLogIn });
+  // };
 
   render() {
     return (
-      <div className="App">
-        <div>
+      <div className="container-fluid">
+        <div className="App">
           <Router>
             <React.Fragment>
-              <Link to="/" style={{ textDecoration: 'none', margin: 'auto' }}>
-                <h1>Vacation Planning</h1>
-              </Link>
-
-              <Entry onLogIn={this.state.onLogIn} />
-
+              <div className="jumbotron jumbrotron-fluid" id="jumbotron">
+                <Link to="/" style={{ textDecoration: 'none', margin: 'auto' }}>
+                  <h1>Vacation Planning</h1>
+                </Link>
+                <Entry onLogIn={this.state.onLogIn} />
+              </div>
               <NavBar />
-
-              {/* <Likes likesCount={this.state.likesCount} likesCounter={this.likesCounter} /> */}
-
-              <Trips
-                addName={this.addName}
-                trips={this.state.trips}
-                nameHandler={this.nameHandler}
-                likesCounter={this.likesCounter}
+              <Route
+                exact
+                path="/destinations"
+                render={props => <Destinations></Destinations>}
               />
-
+              <Route exact path="/" render={props => <Home></Home>} />
               <Route
                 exact
                 path="/login"
@@ -96,7 +67,6 @@ class App extends Component {
                   />
                 )}
               />
-
               <Route
                 exact
                 path="/signup"

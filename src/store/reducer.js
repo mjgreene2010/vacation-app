@@ -1,6 +1,9 @@
+import { server } from '../server';
+import { createStore } from 'redux';
+
 const currentState = {
-    likesCount = 0
-}
+  likesCount: 0
+};
 
 const reducer = (state = currentState, action) => {
   switch (action.type) {
@@ -8,7 +11,7 @@ const reducer = (state = currentState, action) => {
       return { ...state, likesCount: state.trips.likesCount + 1 };
       break;
     case 'DECREASE_LIKES':
-      return { ...state, likesCount: cstate.trips.likesCount - 1 };
+      return { ...state, likesCount: state.trips.likesCount - 1 };
       break;
     default:
       return state;
